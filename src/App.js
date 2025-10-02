@@ -10,8 +10,6 @@ import DiseaseDetection from "./components/pages/DiseaseDetection";
 import MultilingualSupport from "./components/pages/MultilingualSupport";
 import SustainabilityScoring from "./components/pages/SustainabilityScoring";
 
-
-
 // Local Images
 import image1 from './Images/Image1.jpg'; 
 import image2 from './Images/Image2.jpg';
@@ -19,42 +17,39 @@ import image3 from './Images/Image3.jpg';
 import image4 from './Images/Image4.jpg'; 
 import image5 from './Images/Image5.jpg';
 
-// Image Array
 const sliderImages = [image1, image2, image3, image4, image5];
 
 function App() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Effect for slider
+  // Slide change every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % sliderImages.length
-      );
+      setCurrentIndex(prev => (prev + 1) % sliderImages.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
-  // Home page content
   const HomeContent = () => (
     <>
-      {/* Hero Section with Slider */}
-      <section className="relative flex-grow flex items-center h-screen overflow-hidden">
-        {sliderImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out`} 
-            style={{
-              backgroundImage: `url(${image})`,
-              opacity: index === currentImageIndex ? 1 : 0,
-            }}
-          ></div>
-        ))}
+      <section className="relative h-screen overflow-hidden">
+        {/* Slider Track */}
+        <div
+          className="flex h-full transition-transform duration-1000 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {sliderImages.map((image, idx) => (
+            <div
+              key={idx}
+              className="flex-shrink-0 w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${image})` }}
+            ></div>
+          ))}
+        </div>
 
         {/* Overlay */}
-        <div className="relative z-10 bg-black bg-opacity-50 w-full py-24">
-          <div className="container mx-auto px-4 text-center text-white">
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="text-center text-white px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Empowering Farmers With Data-Driven Insights
             </h1>
@@ -80,20 +75,17 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header />
-        
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomeContent />} />
-            <Route path="/soil" element={<SoilIntelligence />} />  {/* Soil page */}
+            <Route path="/soil" element={<SoilIntelligence />} />
             <Route path="/weather" element={<WeatherForecasting />} />
             <Route path="/market" element={<MarketInsights />} />
             <Route path="/disease" element={<DiseaseDetection />} />
             <Route path="/multilingual" element={<MultilingualSupport />} />
             <Route path="/sustainability" element={<SustainabilityScoring />} />
-
           </Routes>
         </main>
-        
         <Footer />
       </div>
     </Router>
