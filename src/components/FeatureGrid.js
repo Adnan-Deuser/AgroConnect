@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaSeedling, FaCloudSun, FaChartLine, FaVirus, FaLanguage, FaRecycle } from 'react-icons/fa';
+import { FaSeedling, FaCloudSun, FaChartLine, FaVirus, FaLanguage, FaRecycle,FaTools,FaUserFriends } from 'react-icons/fa';
 import FeatureCard from './FeatureCard';
 import { useNavigate } from 'react-router-dom';
 
@@ -39,6 +39,16 @@ const features = [
     icon: <FaRecycle />,
     description: 'Measure the environmental impact and receive actionable tips to farm more sustainably.',
     route: '/sustainability' // ✅ added
+  },
+    {
+    title: 'Equipments',
+    icon: <FaTools/>,
+    description: 'Easily manage and share farming equipment through the platform.'
+  },
+ {
+    title: 'Labours',
+    icon: <FaUserFriends/>,
+    description: 'Connect with skilled farm laborers when you need them most.'
   }
 ];
 
