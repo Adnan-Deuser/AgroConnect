@@ -3,14 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import FeatureGrid from './components/FeatureGrid';
 import Footer from './components/Footer';
+
+// Pages
 import SoilIntelligence from "./components/pages/SoilIntelligence";
 import WeatherForecasting from "./components/pages/WeatherForecasting";
 import MarketInsights from "./components/pages/MarketInsights";
-import DiseaseDetection from "./components/pages/DiseaseDetection";
-import MultilingualSupport from "./components/pages/MultilingualSupport";
+import DiseaseDetection from "./components/pages/DiseaseDetection"; // named export
+import { LanguageSelection } from "./components/pages/MultilingualSupport"; // named export
 import SustainabilityScoring from "./components/pages/SustainabilityScoring";
 import Labours from "./components/pages/Labours";
 import Equipments from "./components/pages/Equipments";
+import Translator from './components/pages/Translator';
+
 
 // Local Images
 import image1 from './Images/Image1.jpg'; 
@@ -24,7 +28,7 @@ const sliderImages = [image1, image2, image3, image4, image5];
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Slide change every 5 seconds
+  // Slider auto change
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % sliderImages.length);
@@ -45,7 +49,7 @@ function App() {
               key={idx}
               className="flex-shrink-0 w-full h-full bg-cover bg-center"
               style={{ backgroundImage: `url(${image})` }}
-            ></div>
+            />
           ))}
         </div>
 
@@ -84,11 +88,13 @@ function App() {
             <Route path="/weather" element={<WeatherForecasting />} />
             <Route path="/market" element={<MarketInsights />} />
             <Route path="/disease" element={<DiseaseDetection />} />
-            <Route path="/multilingual" element={<MultilingualSupport />} />
+            <Route path="/multilingual" element={<LanguageSelection />} />
             <Route path="/sustainability" element={<SustainabilityScoring />} />
+
+            {/* Feature Pages */}
             <Route path="/labour" element={<Labours />} />
             <Route path="/equipment" element={<Equipments />} />
-
+            <Route path="/translator" element={<Translator />} />
           </Routes>
         </main>
         <Footer />

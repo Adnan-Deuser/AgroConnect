@@ -41,14 +41,16 @@ const features = [
     route: '/sustainability' // ✅ added
   },
     {
-    title: 'Equipments',
-    icon: <FaTools/>,
-    description: 'Easily manage and share farming equipment through the platform.'
+      title: 'Equipments',
+      icon: <FaTools />,
+      description: 'Easily manage and share farming equipment through the platform.',
+      route: '/equipment'
   },
  {
-    title: 'Labours',
-    icon: <FaUserFriends/>,
-    description: 'Connect with skilled farm laborers when you need them most.'
+  title: 'Labours',
+  icon: <FaUserFriends />,
+  description: 'Connect with skilled farm laborers when you need them most.',
+  route: '/labour'
   }
 ];
 
