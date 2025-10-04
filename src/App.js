@@ -9,6 +9,8 @@ import MarketInsights from "./components/pages/MarketInsights";
 import DiseaseDetection from "./components/pages/DiseaseDetection";
 import MultilingualSupport from "./components/pages/MultilingualSupport";
 import SustainabilityScoring from "./components/pages/SustainabilityScoring";
+import Labours from "./components/pages/Labours";
+import Equipments from "./components/pages/Equipments";
 
 // Local Images
 import image1 from './Images/Image1.jpg'; 
@@ -84,6 +86,9 @@ function App() {
             <Route path="/disease" element={<DiseaseDetection />} />
             <Route path="/multilingual" element={<MultilingualSupport />} />
             <Route path="/sustainability" element={<SustainabilityScoring />} />
+            <Route path="/labour" element={<Labours />} />
+            <Route path="/equipment" element={<Equipments />} />
+
           </Routes>
         </main>
         <Footer />
